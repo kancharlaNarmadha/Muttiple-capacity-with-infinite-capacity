@@ -18,12 +18,53 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 
 ## Experiment:
+![240809641-6bdfe49f-3550-432b-9bf0-34e47d0215cc](https://github.com/kancharlaNarmadha/Muttiple-capacity-with-infinite-capacity/assets/119559316/fd906d94-2df4-4739-ba24-795861f290f3)
+
+![240809829-b1c3bde2-3fa4-4fec-ac9f-095f5fbf27bc](https://github.com/kancharlaNarmadha/Muttiple-capacity-with-infinite-capacity/assets/119559316/e67434fa-b670-4659-811e-f11c5ca6f4f9)
 
 
-## Program
+## Program:
+```
+# Developed by: Kancharla Narmadha
+# Reg no:21222110016
+import math
+arr_time=float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ser_time=float(input("Enter the mean  inter service time of Lathe Machine (in secs) :  "))
+Robot_time=float(input("Enter the Additional time taken for the Robot (in secs) :  "))
+c=int(input("Number of service centre :  "))
+lam=1/arr_time
+mu=1/(ser_time+Robot_time)
+print("--------------------------------------------------------------")
+print("Multiple Server with Infinite Capacity - (M/M/c):(oo/FIFO)")
+print("--------------------------------------------------------------")
+print("The mean arrival rate per second : %0.2f "%lam)
+print("The mean service rate per second : %0.2f "%mu)
+rho=lam/(c*mu)
+sum=(lam/mu)**c*(1/(1-rho))/math.factorial(c)
+for i in range(0,c):
+    sum=sum+(lam/mu)**i/math.factorial(i)
+P0=1/sum
+if (rho<1):
+    Lq=(P0/math.factorial(c))*(1/c)*(lam/mu)**(c+1)/(1-rho)**2
+    Ls=Lq+lam/mu
+    Ws=Ls/lam
+    Wq=Lq/lam
+    print("Average number of objects in the system : %0.2f "%Ls)
+    print("Average number of objects in the conveyor :  %0.2f "%Lq)
+    print("Average waiting time of an object in the system : %0.2f secs"%Ws)
+    print("Average waiting time of an object in the conveyor : %0.2f secs"%Wq)
+    print("Probability that the system is busy : %0.2f "%(rho))
+    print("Probability that the system is empty : %0.2f "%(1-rho))
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("--------------------------------------------------------------")
+```
 
 
 ## Output :
+![239796920-d961ec39-3eb9-44d5-875b-375f5694d5df](https://github.com/kancharlaNarmadha/Muttiple-capacity-with-infinite-capacity/assets/119559316/e963dd4e-8451-489b-9ccf-3664b567c853)
+
 
 ## Result : 
+Thus the average number of materials in the system and conveyor, waiting time of each material in the system and conveyor is found successfully.
 
